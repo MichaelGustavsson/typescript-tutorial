@@ -9,9 +9,12 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 import fetchData from './utilities/http.js';
 const listAllMovies = (page = 1, criteria = '') => __awaiter(void 0, void 0, void 0, function* () {
-    const response = yield fetchData('movie/popular', page, criteria);
+    const url = 'http://localhost:3001/api/v1/movies/list';
+    const response = yield fetch(url);
     const movies = yield response.json();
-    return movies;
+    console.log(movies.data);
+    // const response = await fetchData('movie/popular', page, criteria);
+    return movies.data;
 });
 const searchMovies = (criteria, page = 1) => __awaiter(void 0, void 0, void 0, function* () {
     const response = yield fetchData('search/movie', page, criteria);
