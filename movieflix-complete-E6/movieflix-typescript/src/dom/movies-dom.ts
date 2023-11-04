@@ -1,5 +1,6 @@
 import { BaseInfo } from '../models/baseInfo';
 import { listAllMovies, searchMovies } from '../movies';
+import noImage from '../assets/images/No-Image.jpg';
 import '../assets/css/main.css';
 
 document.querySelector<HTMLFormElement>('#searchForm')!.addEventListener('submit', onSearch);
@@ -43,7 +44,7 @@ async function displayMovies(result: BaseInfo): Promise<void> {
     div.classList.add('card');
     imageAnchor.href = `./movie-details.html?id=${movie.id}`;
     image.alt = `alt=${movie.title}`;
-    image.src = movie.poster_path ? `https://image.tmdb.org/t/p/w500${movie.poster_path}` : '../dist/assets/images/No-Image.jpg';
+    image.src = movie.poster_path ? `https://image.tmdb.org/t/p/w500${movie.poster_path}` : noImage;
     imageAnchor.appendChild(image);
     div.appendChild(imageAnchor);
 

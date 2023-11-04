@@ -2,6 +2,8 @@ import getMovieInfo from '../detail';
 import { MovieInfo } from '../models/movie-info';
 import '../assets/css/main.css';
 
+import noImage from '../assets/images/No-Image.jpg';
+
 async function getMovie(): Promise<void> {
   const movieId = window.location.search.split('=')[1];
   const movie = await getMovieInfo(+movieId);
@@ -13,7 +15,7 @@ function displayMovie(movie: MovieInfo): void {
 
   div.innerHTML = `
       <div class="details-top">
-        <div>${movie.poster_path ? `<img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title}"/>` : `<img src="./src/assets/images/No-Image.jpg" alt="${movie.title}" />`}</div>
+        <div>${movie.poster_path ? `<img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title}"/>` : `<img src=${noImage} alt="${movie.title}" />`}</div>
         <div  class="info">
           <h2>${movie.title}</h2>
           <p>
